@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Languages>
+  <Language id="pol" name="Polski">
+    <!--=== APPLICATION ===-->
+    <text id="app_name">Notatnik#</text>
+
+    <!--=== COMMAND FILE ===-->
+    <text id="command_group_file">_Plik</text>
+    <text id="command_file_new">_Nowy</text>
+    <text id="command_file_open">_Otwórz...</text>
+    <text id="command_file_save">_Zapisz</text>
+    <text id="command_file_close">Za_mknij</text>
+
+    <text id="close_unsaved_file_text">Czy chcesz zapisać plik "{0}"?</text>
+    <text id="close_unsaved_file_caption">Zapisywanie</text>
+    
+    <!--=== COMMAND APPLCATION ===-->
+    <text id="command_app_close">Za_kończ</text>
+
+    <!--=== FILES ===-->
+    <text id="new_file_default_filename">nowy plik {0}</text>
+
+    <!--=== TEXT INFO ===-->
+    <text id="text_caret_info">P: {0}  L: {1}  K: {2}  </text>
+    <text id="text_info">Długość: {0}  Linie: {1}</text>
+
+    
+    <!--=== TOP MENU ===-->
+    <text id="top_menu_navigation">Nawigacja</text>
+    <text id="top_menu_go_back">Wróć</text>
+    <text id="top_menu_go_forward">Naprzód</text>
+    <text id="top_menu_language">Język</text>
+    <text id="top_menu_themes">Motywy</text>
+    <text id="top_menu_reload">Przeładuj</text>
+    <text id="top_menu_reload_languages">Przeładuj języki</text>
+    <text id="top_menu_reload_themes">Przeładuj motywy</text>
+
+
+    <!--=== THEMES ===
+        Resource Dictionary file shoud be added to all\themes\[here]
+        <text id="theme_[theme filename without .xaml]">[displayed name]</text>-->
+    <text id="theme_Default">Domyślny</text>
+    <text id="theme_Dark">Ciemny</text>
+    <text id="theme_DSIII">DS III</text>
+  </Language>
+
+
+
+  <Language id="eng" name="English">
+    <!--=== APPLICATION ===-->
+    <text id="app_name">Notepad#</text>
+
+    <!--=== COMMAND FILE ===-->
+    <text id="command_group_file">_File</text>
+    <text id="command_file_new">_New</text>
+    <text id="command_file_open">_Open...</text>
+    <text id="command_file_save">_Save</text>
+    <text id="command_file_close">_Close</text>
+
+    <text id="close_unsaved_file_text">Do you want to save "{0}"?</text>
+    <text id="close_unsaved_file_caption">Saving</text>
+
+    <!--=== COMMAND APPLCATION ===-->
+    <text id="command_app_close">E_xit</text>
+
+    <!--=== FILES ===-->
+    <text id="new_file_default_filename">new file {0}</text>
+
+    <!--=== TEXT INFO ===-->
+    <text id="text_caret_info">P: {0}  L: {1}  C: {2}  </text>
+    <text id="text_info">Length: {0}  Lines: {1}</text>
+
+    <!--=== TOP MENU ===-->
+    <text id="top_menu_navigation">Navigation</text>
+    <text id="top_menu_go_back">Back</text>
+    <text id="top_menu_go_forward">Forward</text>
+    <text id="top_menu_language">Language</text>
+    <text id="top_menu_themes">Themes</text>
+    <text id="top_menu_reload">Reload</text>
+    <text id="top_menu_reload_languages">Reload languages</text>
+    <text id="top_menu_reload_themes">Reload themes</text>
+
+
+
+    <!--=== THEMES ===
+        Resource Dictionary file shoud be added to ApplicationData\Themes\[here]
+        <text id="theme_[theme filename without .xaml]">[displayed name]</text>-->
+    <text id="theme_Default">Default</text>
+    <text id="theme_Dark">Dark</text>
+    <text id="theme_DSIII">DS III</text>
+  </Language>
+</Languages>
