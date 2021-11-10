@@ -65,8 +65,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="buttonBorder"   BorderBrush="{StaticResource SecondaryLightBrush}" BorderThickness="1" CornerRadius="2" Background="{StaticResource PrimaryLightBrush}">
-                        <Grid >
+                    <Border x:Name="buttonBorder" Padding="{TemplateBinding Padding}"  BorderBrush="{StaticResource SecondaryLightBrush}" BorderThickness="1" CornerRadius="2" Background="{StaticResource PrimaryLightBrush}">
+                        <Grid>
                             <Rectangle x:Name="Overlay" Fill="White" Opacity="0"/>
                             <ContentPresenter  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
@@ -142,7 +142,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border Name="border"
-                            Background="Transparent"
+                            Background="{TemplateBinding Background}"
                                   BorderBrush="{StaticResource  HeaderBGBrush}"
                                   BorderThickness="0,0,0,0" >
                         <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
@@ -789,5 +789,31 @@
         </Style.Resources>
     </Style>
 
+    <!--LISTBOX-->
+    <Style  TargetType="{x:Type ListBox}">
+        <Setter Property="BorderBrush" Value="{StaticResource DarkItemHoverBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryDarkBackgroundBrush}"/>
+    </Style>
+    <!--LISTBOXITEM-->
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Foreground" Value="{StaticResource LightControlForegroundBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="border" Padding="1" SnapsToDevicePixels="true" Background="{StaticResource PrimaryDarkBackgroundBrush}" >
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource DarkItemHoverBrush2}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource DarkItemHoverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

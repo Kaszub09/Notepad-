@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:Notepad.View"
         mc:Ignorable="d"
         Title="{Binding  AppViewModel.AppSubtitles[app_name]}"  Height="500" Width="900" MinHeight="300" MinWidth="600" 
-        Style="{DynamicResource {x:Type Window}}" Icon="/WPFSampleApplication;component/Resources/trayIcon.ico">
+        Style="{DynamicResource {x:Type Window}}" Icon="/WPFSampleApplication;component/Resources/trayIcon.ico" 
+        FontSize="{Binding AppViewModel.Settings.WindowsUI.MainFontSize}" >
     <Window.DataContext>
         <VM:MainWindowViewModel/>
     </Window.DataContext>
@@ -18,49 +19,32 @@
         <KeyBinding Modifiers="Control"   Key="W" Command="{Binding CloseFile}" CommandParameter="{Binding SelectedFileItem}" />
         <KeyBinding Modifiers="Alt"   Key="f4" Command="{Binding AppViewModel.ExitApplication}" />
     </Window.InputBindings>
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextColorBrush" Color="{Binding AppViewModel.Settings.Editor.EditorFontColor}"/>
+        <SolidColorBrush x:Key="BackgroundColorBrush" Color="{Binding AppViewModel.Settings.Editor.EditorBackgroundColor}"/>
+    </Window.Resources>
 
-
-    <DockPanel x:Name="_dockPanel">
+    <DockPanel x:Name="_dockPanel" >
         <!--TOP MENU-->
-        <Grid x:Name="_topMenuGrid" DockPanel.Dock="Top" >
-            <Menu >
-                <MenuItem  Header="{Binding   AppViewModel.AppSubtitles[command_group_file]}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" >
-                    <MenuItem  InputGestureText="Ctrl+N" Header="{Binding  AppViewModel.AppSubtitles[command_file_new]}" Command="{Binding  CreateNewFile}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}"/>
-                    <MenuItem InputGestureText="Ctrl+O"  Header="{Binding  AppViewModel.AppSubtitles[command_file_open]}" Command="{Binding OpenFile}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
-                    <MenuItem InputGestureText="Ctrl+S"  Header="{Binding  AppViewModel.AppSubtitles[command_file_save]}" Command="{Binding SaveFile}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
-                    <MenuItem InputGestureText="Ctrl+W"  Header="{Binding  AppViewModel.AppSubtitles[command_file_close]}" Command="{Binding CloseFile}" CommandParameter="{Binding SelectedFileItem}"  FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
+        <Grid x:Name="_topMenuGrid" DockPanel.Dock="Top"  >
+            <Menu FontSize="{Binding  AppViewModel.Settings.WindowsUI.MainFontSize}" >
+                <MenuItem  Header="{Binding   AppViewModel.AppSubtitles[command_group_file]}"  >
+                    <MenuItem  InputGestureText="Ctrl+N" Header="{Binding  AppViewModel.AppSubtitles[command_file_new]}" Command="{Binding  CreateNewFile}" />
+                    <MenuItem InputGestureText="Ctrl+O"  Header="{Binding  AppViewModel.AppSubtitles[command_file_open]}" Command="{Binding OpenFile}"/>
+                    <MenuItem InputGestureText="Ctrl+S"  Header="{Binding  AppViewModel.AppSubtitles[command_file_save]}" Command="{Binding SaveFile}" />
+                    <MenuItem InputGestureText="Ctrl+W"  Header="{Binding  AppViewModel.AppSubtitles[command_file_close]}" Command="{Binding CloseFile}" CommandParameter="{Binding SelectedFileItem}" />
                     <Separator/>
-                    <MenuItem InputGestureText="Alt+F4"  Header="{Binding  AppViewModel.AppSubtitles[command_app_close]}" Command="{Binding AppViewModel.ExitApplication}" CommandParameter="{Binding SelectedFileItem}"  FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
+                    <MenuItem InputGestureText="Alt+F4"  Header="{Binding  AppViewModel.AppSubtitles[command_app_close]}" Command="{Binding AppViewModel.ExitApplication}" CommandParameter="{Binding SelectedFileItem}"   />
                 </MenuItem>
-                <MenuItem   ItemsSource="{Binding   AppViewModel.AllLanguagesItems}" Header="{Binding  AppViewModel.AppSubtitles[top_menu_language]}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}">
-                    <MenuItem.ItemContainerStyle>
-                        <Style   TargetType="{x:Type MenuItem}" >
-                            <Setter Property="Header" Value="{Binding DisplayName}"/>
-                            <Setter Property="Command" Value="{Binding ChangeLanguage}"/>
-                            <Setter Property="FontSize" Value="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext. AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
-                        </Style>
-                    </MenuItem.ItemContainerStyle>
-                </MenuItem>
-                <MenuItem    ItemsSource="{Binding AppViewModel.AllThemesItems}" Header="{Binding  AppViewModel.AppSubtitles[top_menu_themes]}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}">
-                    <MenuItem.ItemContainerStyle>
-                        <Style   TargetType="{x:Type MenuItem}" >
-                            <Setter Property="Header" Value="{Binding DisplayName}"/>
-                            <Setter Property="Command" Value="{Binding ChangeTheme}"/>
-                            <Setter Property="FontSize" Value="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext. AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
-
-                        </Style>
-                    </MenuItem.ItemContainerStyle>
-                </MenuItem>
-                <MenuItem    Header="{Binding  AppViewModel.AppSubtitles[top_menu_reload]}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}">
-                    <MenuItem Header="{Binding  AppViewModel.AppSubtitles[top_menu_reload_languages]}" Command="{Binding RefreshLanguages}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}" />
-                    <MenuItem Header="{Binding  AppViewModel.AppSubtitles[top_menu_reload_themes]}" Command="{Binding RefreshThemes}" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}"/>
+                <MenuItem  Header="{Binding AppViewModel.AppSubtitles[command_group_options]}"  >
+                    <MenuItem  Header="{Binding  AppViewModel.AppSubtitles[command_options_change_options]}" Command="{Binding ChangeOptions}" />
                 </MenuItem>
             </Menu>
         </Grid>
         <Border DockPanel.Dock="Top"  BorderThickness="0,1,0,0" MinHeight="1"  />
 
         <!--  STATUS BAR -->
-        <StatusBar DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" FontSize="{Binding  AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}">
+        <StatusBar DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" FontSize="{Binding AppViewModel.Settings.WindowsUI.MainFontSize}" >
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -72,7 +56,6 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
-
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
@@ -137,8 +120,7 @@
                         <Image Source="{Binding SaveIcon}" MaxHeight="20"/>
 
                         <TextBlock Margin="12,0,12,0"  Text="{Binding FileName,Mode=OneWay}" VerticalAlignment="Bottom"  
-                                FontSize="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, 
-                                Path=DataContext. AppViewModel.Settings.WindowsUI.MenuAndStatusbarFontSize}"/>
+                                />
 
                         <Button Height="20" Width="20" Content="X" Command="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, 
                                 Path=DataContext.CloseFile}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext}" />
@@ -169,11 +151,26 @@
                         <ScrollBar/>
                     </Grid>-->
                     <Grid>
-                        <local:ExtendedTextBox x:Name="textTextBox"   Style="{DynamicResource {x:Type TextBox}}"  Text="{Binding  Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                               Margin="{Binding ElementName=lineTextBox,Path=TextBoxMargin,Mode=OneWay}" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto"  
-                               AcceptsReturn="True" AcceptsTab="True"  TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ClipToBounds="True"   />
+                        <local:ExtendedTextBox x:Name="textTextBox"   Style="{DynamicResource {x:Type TextBox}}"  
+                                                Text="{Binding  Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                                Margin="{Binding ElementName=lineTextBox,Path=TextBoxMargin,Mode=OneWay}"
+                                                HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto"  
+                                                Foreground="{DynamicResource TextColorBrush}" 
+                                                Background="{DynamicResource BackgroundColorBrush}"
+                                                FontFamily="{Binding AppViewModel.Settings.Editor.EditorFontFamily}" 
+                                                FontSize="{Binding AppViewModel.Settings.Editor.EditorFontSize}"
+                                                FontStyle="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Style}" 
+                                                FontStretch="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Stretch}"
+                                                FontWeight="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Weight}"
+                                              AcceptsReturn="True" AcceptsTab="True"  TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ClipToBounds="True"   />
+
                         <local:ExtendedTextBox  x:Name="lineTextBox"   Style="{DynamicResource {x:Type TextBox}}"   Text="{Binding AllLinesNumbers}"
                                                 Padding="{Binding ElementName=textTextBox,Path=TextBoxNumbersPadding,Mode=OneWay}"   
+                                                FontFamily="{Binding AppViewModel.Settings.Editor.EditorFontFamily}" 
+                                                FontSize="{Binding AppViewModel.Settings.Editor.EditorFontSize}"
+                                                FontStyle="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Style}" 
+                                                FontStretch="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Stretch}"
+                                                FontWeight="{Binding AppViewModel.Settings.Editor.EditorFontTypeface.Weight}"
                                         IsEnabled="False"    TextAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Left" ClipToBounds="True"/>
                         <!--<Rectangle VerticalAlignment="Top"
                              Margin="{Binding ElementName=textTextBox,Path=TopMarginForOverlay,Mode=OneWay}" Fill="Wheat" Opacity="0.2"  

@@ -29,21 +29,19 @@ namespace Notepad.ViewModel {
         public ICommand OpenFile { get; }
         public ICommand SaveFile { get; }
         public ICommand CloseFile { get; }
+
+        public ICommand ChangeOptions { get; }
+
         public ICommand NextFile { get => _nextFile; }
         public ICommand PreviousFile { get => _previousFile; }
-
         private Command _nextFile;
         private Command _previousFile;
         #endregion
 
-
-
+        private bool _isSettingsWindowShown;
 
         public MainWindowViewModel() : base() {
-
-            //AllFilesItems.Add(new DocumentViewModel(new DocumentModel()) { Text = "Test 1", FileName = "Name 1" });
-            //AllFilesItems.Add(new DocumentViewModel(new DocumentModel()) { Text = "Test 2", FileName = "Name 2" });
-            //AllFilesItems.Add(new DocumentViewModel(new DocumentModel()) { Text = "Test 3", FileName = "Name 3" });
+            _isSettingsWindowShown = false;
 
             #region Commands
             CreateNewFile = new Command((obj) => {
@@ -79,9 +77,18 @@ namespace Notepad.ViewModel {
                         AllFilesItems.Remove(SelectedFileItem);
                     }
                 }
-
             });
 
+            ChangeOptions = new Command((obj) => {
+                if (!_isSettingsWindowShown) {
+                    var settingsWindow = App.Current.Services.GetRequiredService<SettingsWindow>();
+                    settingsWindow.Owner = App.Current.MainWindow;
+                    settingsWindow.Closed += (sender,e)=> _isSettingsWindowShown = false;
+                    settingsWindow.Show();
+                    _isSettingsWindowShown = true;
+                }
+            });
+            
             _nextFile = new Command((obj) => SelectedFileItem = AllFilesItems[AllFilesItems.IndexOf(SelectedFileItem) + 1],
                 (obj) => AllFilesItems.IndexOf(SelectedFileItem) < AllFilesItems.Count() - 1);
 

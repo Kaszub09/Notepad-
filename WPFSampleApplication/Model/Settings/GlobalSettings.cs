@@ -12,17 +12,18 @@ using System.Xml.Serialization;
 namespace Notepad.Model {
     public class GlobalSettings : IGlobalSettings {
         //All settings groups
-        public ISettingsWindowsUI WindowsUI { get; private set; }
-        public ISettingsProcess Process { get; private set; }
+        public ISettingsApplicationUI WindowsUI { get; private set; }
+        public ISettingsEditor Editor { get; private set; }
 
         //Other
         public event EventHandler AnySettingsChanged;
         public bool AutosaveAnyChanges { get; set; } = true;
         private string _directoryPath;
         private IEnumerable<PropertyInfo> _settingsProperties;
-        public GlobalSettings(ISettingsWindowsUI settingsWindowsUI, ISettingsProcess settingsProcess, string directoryPath = @"ApplicationData\Settings") {
+
+        public GlobalSettings(ISettingsApplicationUI settingsWindowsUI, ISettingsEditor settingsEditor, string directoryPath = @"ApplicationData\Settings") {
             WindowsUI = settingsWindowsUI;
-            Process = settingsProcess;
+            Editor = settingsEditor;
             _directoryPath = directoryPath;
 
             //Prepare directory for settings

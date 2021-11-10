@@ -13,6 +13,7 @@ namespace Notepad.ViewModel {
 
         public BaseViewModel() {
             AppViewModel = App.Current.AppViewModel;
+           // AppViewModel.Settings.Editor.EditorFontFamily.
         }
 
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null) {

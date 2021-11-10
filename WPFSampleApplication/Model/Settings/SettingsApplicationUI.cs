@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Notepad.Model {
-    public class SettingsWindowsUI : ISettingsWindowsUI {
+    public class SettingsApplicationUI : ISettingsApplicationUI {
         public event PropertyChangedEventHandler PropertyChanged;
         [DoNotNotify]
         public bool AutosaveChanges { get; set; } = true;
@@ -15,9 +15,6 @@ namespace Notepad.Model {
         //Actual settings
         public string ThemeID { get; set; } = "Default";
         public string LanguageID { get; set; } = "pol";
-        public int MenuAndStatusbarFontSize { get; set; } = 12;
         public int MainFontSize { get; set; } = 12;
-        public bool ShowNotifications { get; set; } = true;
-        public bool UpdateTaskbarIcon { get; set; } = true;
     }
 }

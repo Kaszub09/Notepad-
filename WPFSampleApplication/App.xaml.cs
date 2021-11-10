@@ -52,9 +52,9 @@ namespace Notepad {
         /// </summary>
         private static IServiceProvider ConfigureServices() {
             var services = new ServiceCollection();
-            
-            services.AddSingleton<ISettingsProcess, SettingsProcess>();
-            services.AddSingleton<ISettingsWindowsUI, SettingsWindowsUI>();
+
+            services.AddSingleton<ISettingsEditor, SettingsEditor>();
+            services.AddSingleton<ISettingsApplicationUI, SettingsApplicationUI>();
             services.AddSingleton<IGlobalSettings, GlobalSettings>();
             services.AddSingleton<IApplicationSubtitles, ApplicationSubtitles>();
             services.AddSingleton<IApplicationThemes, ApplicationThemes>();
@@ -62,8 +62,13 @@ namespace Notepad {
             services.AddSingleton<ApplicationWideViewModel, ApplicationWideViewModel>();
             services.AddSingleton<BaseViewModel, BaseViewModel>();
             services.AddSingleton<MainWindowViewModel, MainWindowViewModel>();
-            
+            services.AddSingleton<SettingsWindowViewModel, SettingsWindowViewModel>();
+
+            services.AddTransient<SettingsWindow, SettingsWindow>();
             services.AddSingleton<MainWindow, MainWindow>();
+
+            services.AddSingleton<ApplicationSettingsPage, ApplicationSettingsPage>();
+            services.AddSingleton<TextSettingsPage, TextSettingsPage>();
 
             services.AddTransient<DocumentViewModel, DocumentViewModel>();
             services.AddTransient<IDocumentModel, DocumentModel>();

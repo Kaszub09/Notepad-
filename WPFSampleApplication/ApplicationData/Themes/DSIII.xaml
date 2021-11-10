@@ -36,6 +36,7 @@
     <Color x:Key="DS3BackgroundLigtherBlack">#080810</Color>
 
     <!--Color brushes.-->
+    <SolidColorBrush x:Key="DS3HoverBrushHalf" Color="{StaticResource DS3HoverColor}" Opacity="0.5"/>
     <SolidColorBrush x:Key="DS3HoverBrush" Color="{StaticResource DS3HoverColor}"/>
     <SolidColorBrush x:Key="DS3BorderBrush" Color="#ee6b5d3a"/>
     <SolidColorBrush x:Key="DS3DarkedBorderBrush" Color="#453d25"/>
@@ -105,7 +106,7 @@
                     <Grid x:Name="grid" >
                         <Border x:Name="outerBorder" CornerRadius="0" BorderBrush="{StaticResource DS3BorderBrush}" BorderThickness="1" Padding = "2">
                             <Grid x:Name="grid2" >
-                                <Border x:Name="border" CornerRadius="0" BorderBrush="{StaticResource DS3BorderBrush}" BorderThickness="1">
+                                <Border x:Name="border" Padding="{TemplateBinding Padding}"  CornerRadius="0" BorderBrush="{StaticResource DS3BorderBrush}" BorderThickness="1">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </Grid>
@@ -177,7 +178,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border Name="border"
-                            Background="Transparent"
+                            Background="{TemplateBinding Background}"
                                   BorderBrush="{StaticResource labelBottomBrush}"
                                   BorderThickness="0,0,0,0" >
                         <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
@@ -908,5 +909,34 @@
             <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
         </Style.Resources>
     </Style>
+
+    <!--LISTBOX-->
+    <Style  TargetType="{x:Type ListBox}">
+        <Setter Property="BorderBrush" Value="{StaticResource DS3BorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource DS3BackgroundPureBlackBrush}"/>
+    </Style>
+    <!--LISTBOXITEM-->
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Foreground" Value="{StaticResource DS3TextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource DS3Font}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="border" Padding="1" SnapsToDevicePixels="true" Background="{StaticResource DS3BackgroundPureBlackBrush}" >
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource DS3HoverBrushHalf}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource DS3HoverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

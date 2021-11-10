@@ -14,17 +14,21 @@
     <text id="close_unsaved_file_text">Czy chcesz zapisać plik "{0}"?</text>
     <text id="close_unsaved_file_caption">Zapisywanie</text>
     
-    <!--=== COMMAND APPLCATION ===-->
+    <!--=== COMMAND APPLICATION ===-->
     <text id="command_app_close">Za_kończ</text>
 
+    <!--=== COMMAND SETTINGS ===-->
+    <text id="command_group_options">_Opcje</text>
+    <text id="command_options_change_options">_Ustawienia</text>
+ 
     <!--=== FILES ===-->
     <text id="new_file_default_filename">nowy plik {0}</text>
 
     <!--=== TEXT INFO ===-->
     <text id="text_caret_info">P: {0}  L: {1}  K: {2}  </text>
     <text id="text_info">Długość: {0}  Linie: {1}</text>
-
     
+
     <!--=== TOP MENU ===-->
     <text id="top_menu_navigation">Nawigacja</text>
     <text id="top_menu_go_back">Wróć</text>
@@ -35,7 +39,23 @@
     <text id="top_menu_reload_languages">Przeładuj języki</text>
     <text id="top_menu_reload_themes">Przeładuj motywy</text>
 
+    <!--=== SETTINGS ===-->
+    <text id="settings_window_name">Ustawienia</text>
+    <!--UI SETTINGS-->
+    <text id="settings_page_application_name">Ogólne</text>
+    <text id="settings_page_application_label_language">Język</text>
+    <text id="settings_page_application_label_theme">Motyw</text>
+    <text id="settings_page_application_label_main_font_size">Rozmiar czcionki</text>
 
+    <!--TEXT SETTINGS-->
+    <text id="settings_page_editor_name">Edycja</text>
+    <text id="settings_page_editor_label_font">Czionka</text>
+    <text id="settings_page_editor_label_font_style">Styl</text>
+    <text id="settings_page_editor_label_font_size">Rozmiar czcionki</text>
+    <text id="settings_page_editor_label_text_color">Kolor tekstu</text>
+    <text id="settings_page_editor_label_background_color">Kolor tła</text>
+    
+    
     <!--=== THEMES ===
         Resource Dictionary file shoud be added to all\themes\[here]
         <text id="theme_[theme filename without .xaml]">[displayed name]</text>-->
@@ -63,6 +83,10 @@
     <!--=== COMMAND APPLCATION ===-->
     <text id="command_app_close">E_xit</text>
 
+    <!--=== COMMAND SETTINGS ===-->
+    <text id="command_group_options">_Options</text>
+    <text id="command_options_change_options">_Settings</text>
+    
     <!--=== FILES ===-->
     <text id="new_file_default_filename">new file {0}</text>
 
@@ -80,6 +104,21 @@
     <text id="top_menu_reload_languages">Reload languages</text>
     <text id="top_menu_reload_themes">Reload themes</text>
 
+    <!--=== SETTINGS ===-->
+    <text id="settings_window_name">Ustawienia</text>
+    <!--UI SETTINGS-->
+    <text id="settings_page_application_name">General</text>
+    <text id="settings_page_application_label_language">Language</text>
+    <text id="settings_page_application_label_theme">Theme</text>
+    <text id="settings_page_application_label_main_font_size">Font size</text>
+
+    <!--TEXT SETTINGS-->
+    <text id="settings_page_editor_name">Editor</text>
+    <text id="settings_page_editor_label_font">Font</text>
+    <text id="settings_page_editor_label_font_style">Style</text>
+    <text id="settings_page_editor_label_font_size">Font size</text>
+    <text id="settings_page_editor_label_text_color">Text color</text>
+    <text id="settings_page_editor_label_background_color">Background color</text>
 
 
     <!--=== THEMES ===

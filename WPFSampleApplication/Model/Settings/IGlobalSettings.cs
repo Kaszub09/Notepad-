@@ -4,8 +4,8 @@ using System;
 namespace Notepad.Model {
     public interface IGlobalSettings {
         bool AutosaveAnyChanges { get; set; }
-        ISettingsProcess Process { get; }
-        ISettingsWindowsUI WindowsUI { get; }
+        ISettingsEditor Editor { get; }
+        ISettingsApplicationUI WindowsUI { get; }
 
         event EventHandler AnySettingsChanged;
 
